@@ -20,10 +20,5 @@ $stmt->close();
 }
 
 ?>
-<form method ="POST">
-    <input type="text" name="nom" placeholder="nom" required>
-    <input type="text" name="adress" placeholder="adress" required>
-    <input type="text" name="tel" placeholder="tel" required>
-    <button type="submit">Add user</button>
-</form>
+
 

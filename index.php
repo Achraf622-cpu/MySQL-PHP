@@ -1,5 +1,6 @@
 <?php
 include_once "connect.php";
+include_once "create.php";
 $result = $conn->query("SELECT * FROM clients");
 ?>
 <!DOCTYPE html>
@@ -47,7 +48,7 @@ $result = $conn->query("SELECT * FROM clients");
                         <td><?=$row["Adress"] ?></td>
                         <td><?=$row["Tel"] ?></td>
                         <td>
-                        <a href="modify.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-edit">Edit</button></a>
+                        <a href="update.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-edit">Edit</button></a>
                             <a href="delete.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-delete">Delete</button></a>
                         </td>
                     </tr>
@@ -58,5 +59,12 @@ $result = $conn->query("SELECT * FROM clients");
             </table>
         </section>
     </main>
+    <form method ="POST">
+    <input type="text" name="nom" placeholder="nom" required>
+    <input type="text" name="adress" placeholder="adress" required>
+    <input type="text" name="tel" placeholder="tel" required>
+    <button type="submit">Add user</button>
+</form>
+
 </body>
 </html>
