@@ -1,7 +1,5 @@
 <?php
 include_once "connect.php";
-include_once "create.php";
-$result = $conn->query("SELECT * FROM clients");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,62 +7,43 @@ $result = $conn->query("SELECT * FROM clients");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header class="header">
-        <h1>Car Rental Management</h1>
+    <header class="bg-dark text-white py-3">
+        <div class="container">
+            <h1 class="text-center">Location de Voiture</h1>
+            <p class="text-center">Simplifiez votre location de voitures en quelques clics !</p>
+        </div>
     </header>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#clients">Clients</a></li>
-            <li><a href="#cars">Cars</a></li>
-            <li><a href="#contracts">Contracts</a></li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">Accueil</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="clients.php">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cars.php">Voitures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contracts.php">Contrats</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <main>
-        <section id="clients">
-            <h2>Clients</h2>
-            
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Client ID</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                 
-
-                 while ($row = $result->fetch_assoc()) {
-                    ?>
-                    <tr>
-                        <td><?= $row["NumClients"]?></td>
-                        <td><?=$row["Nom"] ?></td>
-                        <td><?=$row["Adress"] ?></td>
-                        <td><?=$row["Tel"] ?></td>
-                        <td>
-                        <a href="update.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-edit">Edit</button></a>
-                            <a href="delete.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-delete">Delete</button></a>
-                        </td>
-                    </tr>
-                    <?php
-                 }
-                 ?>
-                </tbody>
-            </table>
+    <main class="container mt-5">
+        <section class="text-center">
+            <h2 class="mb-4">Bienvenue sur notre site de location de voitures</h2>
+            <p class="lead">Découvrez une expérience simplifiée pour gérer vos clients, voitures et contrats en toute efficacité.</p>
+            <a href="clients.php" class="btn btn-primary btn-lg mx-2">Gérer les Clients</a>
+            <a href="cars.php" class="btn btn-success btn-lg mx-2">Gérer les Voitures</a>
+            <a href="contracts.php" class="btn btn-info btn-lg mx-2">Gérer les Contrats</a>
         </section>
     </main>
-    <form method ="POST">
-    <input type="text" name="nom" placeholder="nom" required>
-    <input type="text" name="adress" placeholder="adress" required>
-    <input type="text" name="tel" placeholder="tel" required>
-    <button type="submit">Add user</button>
-</form>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; <?= date('Y') ?> Location de Voiture. Tous droits réservés.</p>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
