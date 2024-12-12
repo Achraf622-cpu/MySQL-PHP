@@ -1,5 +1,6 @@
 <?php
 include_once "connect.php";
+$result = $conn->query("SELECT * FROM clients");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,16 +37,15 @@ include_once "connect.php";
                 </thead>
                 <tbody>
                 <?php
-                 $sql = "SELECT * FROM clients";
-                 $result = $pdo->query($sql);
+                 
 
-                 while ($row = $result->fetch()) {
+                 while ($row = $result->fetch_assoc()) {
                     ?>
                     <tr>
-                        <td><?= htmlspecialchars($row["NumClients"]) ?></td>
-                        <td><?= htmlspecialchars($row["Nom"]) ?></td>
-                        <td><?= htmlspecialchars($row["Adress"]) ?></td>
-                        <td><?= htmlspecialchars($row["Tel"]) ?></td>
+                        <td><?= $row["NumClients"]?></td>
+                        <td><?=$row["Nom"] ?></td>
+                        <td><?=$row["Adress"] ?></td>
+                        <td><?=$row["Tel"] ?></td>
                         <td>
                         <a href="modify.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-edit">Edit</button></a>
                             <a href="delete.php?id=<?=htmlspecialchars($row["NumClients"])?>"><button class="btn-delete">Delete</button></a>
