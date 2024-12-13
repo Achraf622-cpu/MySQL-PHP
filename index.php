@@ -37,7 +37,7 @@ include_once "connect.php";
             <p class="lead">Découvrez une expérience simplifiée pour gérer vos clients, voitures et contrats en toute efficacité.</p>
             <a href="./Clients/clients.php" class="btn btn-primary btn-lg mx-2">Gérer les Clients</a>
             <a href="./Voiture/cars.php" class="btn btn-success btn-lg mx-2">Gérer les Voitures</a>
-            <a href="./Contracts/.contracts.php" class="btn btn-info btn-lg mx-2">Gérer les Contrats</a>
+            <a href="./Contracts/contracts.php" class="btn btn-info btn-lg mx-2">Gérer les Contrats</a>
         </section>
     </main>
     <footer class="bg-dark text-white text-center py-3 mt-5">

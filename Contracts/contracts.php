@@ -1,5 +1,5 @@
 <?php
-include_once "connect.php";
+include_once "../connect.php";
 $result = $conn->query("SELECT * FROM contrats");
 ?>
 <!DOCTYPE html>
@@ -51,15 +51,15 @@ $result = $conn->query("SELECT * FROM contrats");
             <tbody>
                 <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr>
-                    <td><?= htmlspecialchars($row['NumContrat']) ?></td>
-                    <td><?= htmlspecialchars($row['DateDebut']) ?></td>
-                    <td><?= htmlspecialchars($row['DateFin']) ?></td>
-                    <td><?= htmlspecialchars($row['Duree']) ?> jours</td>
-                    <td><?= htmlspecialchars($row['NumClient']) ?></td>
-                    <td><?= htmlspecialchars($row['NumImmatriculation']) ?></td>
+                    <td><?= $row['NumContrat'] ?></td>
+                    <td><?=$row['DateDebut'] ?></td>
+                    <td><?= $row['DateFin'] ?></td>
+                    <td><?= $row['Duree'] ?> jours</td>
+                    <td><?= $row['NumClient']?></td>
+                    <td><?= $row['NumImmatriculation'] ?></td>
                     <td>
-                        <a href="edit_contract.php?NumContrat=<?= htmlspecialchars($row['NumContrat']) ?>" class="btn btn-warning btn-sm">Modifier</a>
-                        <a href="delete_contract.php?NumContrat=<?= htmlspecialchars($row['NumContrat']) ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="update_contracts.php?NumContrat=<?= $row['NumContrat'] ?>" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="delete_contracts.php?NumContrat=<?= $row['NumContrat'] ?>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
                 <?php } ?>
@@ -74,7 +74,7 @@ $result = $conn->query("SELECT * FROM contrats");
                     <h5 class="modal-title" id="addContractModalLabel">Ajouter un Contrat</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="create_contract.php">
+                <form method="POST" action="create_contracts.php">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="DateDebut" class="form-label">Date de Début</label>
