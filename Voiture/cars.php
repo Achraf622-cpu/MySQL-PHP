@@ -1,5 +1,5 @@
 <?php
-include_once "connect.php";
+include_once "../connect.php";
 include_once "create_cars.php";
 $result = $conn->query("SELECT * FROM voitures");
 ?>
@@ -55,7 +55,7 @@ $result = $conn->query("SELECT * FROM voitures");
                     <td><?= htmlspecialchars($row['Modele']) ?></td>
                     <td><?= htmlspecialchars($row['Annee']) ?></td>
                     <td>
-                        <a href="update_car.php?NumImmatricule=<?= htmlspecialchars($row['NumImmatricule']) ?>" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="update_cars.php?NumImmatricule=<?= htmlspecialchars($row['NumImmatricule']) ?>" class="btn btn-warning btn-sm">Modifier</a>
                         <a href="delete_car.php?NumImmatricule=<?= htmlspecialchars($row['NumImmatricule']) ?>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
