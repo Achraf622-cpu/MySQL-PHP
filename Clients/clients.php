@@ -1,5 +1,5 @@
 <?php
-include_once "connect.php";
+include_once "../connect.php";
 include_once "create.php";
 $result = $conn->query("SELECT * FROM clients");
 ?>

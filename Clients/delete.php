@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 
 if (isset($_GET['NumClients']) && is_numeric($_GET['NumClients']))  {
     $NumClients = intval($_GET['NumClients']);

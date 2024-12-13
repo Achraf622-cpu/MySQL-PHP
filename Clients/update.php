@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../connect.php';
 
 if (isset($_GET['NumClients'])) {
     $NumClients = $_GET['NumClients'];

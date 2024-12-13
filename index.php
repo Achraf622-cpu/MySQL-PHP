@@ -22,9 +22,9 @@ include_once "connect.php";
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapsgite navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="clients.php">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Clients/clients.php">Clients</a></li>
                     <li class="nav-item"><a class="nav-link" href="cars.php">Voitures</a></li>
                     <li class="nav-item"><a class="nav-link" href="contracts.php">Contrats</a></li>
                 </ul>
@@ -35,7 +35,7 @@ include_once "connect.php";
         <section class="text-center">
             <h2 class="mb-4">Bienvenue sur notre site de location de voitures</h2>
             <p class="lead">Découvrez une expérience simplifiée pour gérer vos clients, voitures et contrats en toute efficacité.</p>
-            <a href="clients.php" class="btn btn-primary btn-lg mx-2">Gérer les Clients</a>
+            <a href="./Clients/clients.php" class="btn btn-primary btn-lg mx-2">Gérer les Clients</a>
             <a href="cars.php" class="btn btn-success btn-lg mx-2">Gérer les Voitures</a>
             <a href="contracts.php" class="btn btn-info btn-lg mx-2">Gérer les Contrats</a>
         </section>
