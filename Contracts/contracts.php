@@ -58,7 +58,6 @@ $result = $conn->query("SELECT * FROM contrats");
                     <td><?= $row['NumClient']?></td>
                     <td><?= $row['NumImmatriculation'] ?></td>
                     <td>
-                        <a href="update_contracts.php?NumContrat=<?= $row['NumContrat'] ?>" class="btn btn-warning btn-sm">Modifier</a>
                         <a href="delete_contracts.php?NumContrat=<?= $row['NumContrat'] ?>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
