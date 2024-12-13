@@ -30,14 +30,24 @@ if (isset($_GET['NumClients'])) {
         die("No user found with ID $NumClients");
     }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<link rel="stylesheet" href="../styles.css">
 <form method="POST">
     <input type="text" name="nom" value="<?= htmlspecialchars($user['Nom']) ?>" required>
     <input type="text" name="adress" value="<?= htmlspecialchars($user['Adress']) ?>" required>
     <input type="text" name="tel" value="<?= htmlspecialchars($user['Tel']) ?>" required>
     <button type="submit">Update user</button>
 </form>
-
+</body>
+</html>
 <?php
 } else {
     echo "No user ID provided.";

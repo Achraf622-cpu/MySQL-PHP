@@ -19,6 +19,8 @@ if (isset($_GET['NumImmatricule'])) {
 
         if ($stmt->execute() === TRUE) {
             echo "Car updated successfully!";
+            header("Location: cars.php");
+             exit();
         } else {
             echo "Error: " . $stmt->error;
         }
@@ -36,14 +38,27 @@ if (isset($_GET['NumImmatricule'])) {
         die("No user found with ID $NumImmatricule");
     }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    
 <form method="POST">
     <input type="text" name="NumImmatricule" value="<?= htmlspecialchars($user['NumImmatricule']) ?>" required>
     <input type="text" name="Marque" value="<?= htmlspecialchars($user['Marque']) ?>" required>
     <input type="text" name="Modele" value="<?= htmlspecialchars($user['Modele']) ?>" required>
     <input type="number" name="Annee" value="<?= htmlspecialchars($user['Annee']) ?>" required>
     <button type="submit">Update user</button>
-</form>
+</form>  
+
+</body>
+</html>
+
 
 <?php
 } else {
