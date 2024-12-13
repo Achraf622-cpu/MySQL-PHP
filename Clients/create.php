@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare("INSERT INTO clients (Nom, Adress, Tel) VALUES (?,?,?)");
     $stmt->bind_param("sss", $Nom, $Adress, $Tel);
 
-    if ($stmt->execute() === TRUE) {
+    if ($stmt->execute()) {
         echo"User added successfully!";
         header("Location: clients.php");
         exit;
