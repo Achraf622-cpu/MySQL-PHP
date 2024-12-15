@@ -9,13 +9,49 @@ $result = $conn->query("SELECT * FROM contrats");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrats</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        header {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+        }
+        nav .nav-link {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+        table thead {
+            background: #6610f2;
+            color: white;
+        }
+        table tbody tr:hover {
+            background: rgba(0, 123, 255, 0.1);
+        }
+        .btn-sm {
+            font-size: 0.875rem;
+        }
+        .modal-content {
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #6610f2, #007bff);
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white py-3">
-        <div class="container">
-            <h1 class="text-center">Contrats</h1>
+    <!-- Header -->
+    <header class="py-4">
+        <div class="container text-center">
+            <h1>Gestion des Contrats</h1>
         </div>
     </header>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Accueil</a>
@@ -31,13 +67,15 @@ $result = $conn->query("SELECT * FROM contrats");
             </div>
         </div>
     </nav>
-    <main class="container mt-5">
+
+    <!-- Main Content -->
+    <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Liste des Contrats</h2>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addContractModal">Ajouter un Contrat</button>
         </div>
-        <table class="table table-bordered">
-            <thead class="table-dark">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>Date de Début</th>
@@ -51,14 +89,14 @@ $result = $conn->query("SELECT * FROM contrats");
             <tbody>
                 <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr>
-                    <td><?= $row['NumContrat'] ?></td>
-                    <td><?=$row['DateDebut'] ?></td>
-                    <td><?= $row['DateFin'] ?></td>
-                    <td><?= $row['Duree'] ?> jours</td>
-                    <td><?= $row['NumClient']?></td>
-                    <td><?= $row['NumImmatriculation'] ?></td>
+                    <td><?= htmlspecialchars($row['NumContrat']) ?></td>
+                    <td><?= htmlspecialchars($row['DateDebut']) ?></td>
+                    <td><?= htmlspecialchars($row['DateFin']) ?></td>
+                    <td><?= htmlspecialchars($row['Duree']) ?> jours</td>
+                    <td><?= htmlspecialchars($row['NumClient']) ?></td>
+                    <td><?= htmlspecialchars($row['NumImmatriculation']) ?></td>
                     <td>
-                        <a href="delete_contracts.php?NumContrat=<?= $row['NumContrat'] ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="delete_contracts.php?NumContrat=<?= htmlspecialchars($row['NumContrat']) ?>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
                 <?php } ?>
@@ -66,6 +104,7 @@ $result = $conn->query("SELECT * FROM contrats");
         </table>
     </main>
 
+    <!-- Add Contract Modal -->
     <div class="modal fade" id="addContractModal" tabindex="-1" aria-labelledby="addContractModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

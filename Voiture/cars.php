@@ -10,13 +10,49 @@ $result = $conn->query("SELECT * FROM voitures");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voitures</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        header {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            color: white;
+        }
+        nav .nav-link {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+        table thead {
+            background: #6610f2;
+            color: white;
+        }
+        table tbody tr:hover {
+            background: rgba(0, 123, 255, 0.1);
+        }
+        .btn-sm {
+            font-size: 0.875rem;
+        }
+        .modal-content {
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #6610f2);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #6610f2, #007bff);
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white py-3">
-        <div class="container">
-            <h1 class="text-center">Voitures</h1>
+    <!-- Header -->
+    <header class="py-4">
+        <div class="container text-center">
+            <h1>Gestion des Voitures</h1>
         </div>
     </header>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Accueil</a>
@@ -32,13 +68,15 @@ $result = $conn->query("SELECT * FROM voitures");
             </div>
         </div>
     </nav>
-    <main class="container mt-5">
+
+
+    <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Liste des Voitures</h2>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCarModal">Ajouter une Voiture</button>
         </div>
-        <table class="table table-bordered">
-            <thead class="table-dark">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
                     <th>Numéro Immatricule</th>
                     <th>Marque</th>
@@ -50,20 +88,19 @@ $result = $conn->query("SELECT * FROM voitures");
             <tbody>
                 <?php while ($row = $result->fetch_assoc()) { ?>
                 <tr>
-                    <td><?= htmlspecialchars($row['NumImmatricule']) ?></td>
-                    <td><?= htmlspecialchars($row['Marque']) ?></td>
-                    <td><?= htmlspecialchars($row['Modele']) ?></td>
-                    <td><?= htmlspecialchars($row['Annee']) ?></td>
+                    <td><?= $row['NumImmatricule'] ?></td>
+                    <td><?= $row['Marque'] ?></td>
+                    <td><?= $row['Modele'] ?></td>
+                    <td><?= $row['Annee'] ?></td>
                     <td>
-                        <a href="update_cars.php?NumImmatricule=<?= htmlspecialchars($row['NumImmatricule']) ?>" class="btn btn-warning btn-sm">Modifier</a>
-                        <a href="delete_car.php?NumImmatricule=<?= htmlspecialchars($row['NumImmatricule']) ?>" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="update_cars.php?NumImmatricule=<?= $row['NumImmatricule'] ?>" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="delete_car.php?NumImmatricule=<?= $row['NumImmatricule'] ?>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
                 <?php } ?>
             </tbody>
         </table>
     </main>
-
 
     <div class="modal fade" id="addCarModal" tabindex="-1" aria-labelledby="addCarModalLabel" aria-hidden="true">
         <div class="modal-dialog">

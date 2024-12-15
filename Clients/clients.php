@@ -1,6 +1,5 @@
 <?php
 include_once "../connect.php";
-include_once "create.php";
 $result = $conn->query("SELECT * FROM clients");
 ?>
 <!DOCTYPE html>
@@ -10,13 +9,49 @@ $result = $conn->query("SELECT * FROM clients");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        header {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+        nav .nav-link {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav .nav-link:hover {
+            color: #f8f9fa;
+        }
+        table thead {
+            background: #20c997;
+            color: white;
+        }
+        table tbody tr:hover {
+            background: rgba(40, 167, 69, 0.1);
+        }
+        .btn-sm {
+            font-size: 0.875rem;
+        }
+        .modal-content {
+            border-radius: 10px;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #20c997, #28a745);
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white py-3">
-        <div class="container">
-            <h1 class="text-center">Clients</h1>
+    
+    <header class="py-4">
+        <div class="container text-center">
+            <h1>Gestion des Clients</h1>
         </div>
     </header>
+
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="../index.php">Accueil</a>
@@ -32,15 +67,17 @@ $result = $conn->query("SELECT * FROM clients");
             </div>
         </div>
     </nav>
-    <main class="container mt-5">
+
+    
+    <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2>Liste des Clients</h2>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClientModal">Ajouter un Client</button>
         </div>
-        <table class="table table-bordered">
-            <thead class="table-dark">
+        <table class="table table-striped table-hover">
+            <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>#</th>
                     <th>Nom</th>
                     <th>Adresse</th>
                     <th>Téléphone</th>
@@ -64,6 +101,7 @@ $result = $conn->query("SELECT * FROM clients");
         </table>
     </main>
 
+    
     <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="addClientModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -94,7 +132,6 @@ $result = $conn->query("SELECT * FROM clients");
             </div>
         </div>
     </div>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
